@@ -1,0 +1,26 @@
+{
+  "name": "HowToFdc3SystemChannelListener",
+  "title": "How-to FDC3 System Channel Listener",
+  "details": {
+    "autoOpenDevTools": true,
+    "allowAuthInfo": true,
+    "url": "http://localhost:6060/system-channel-listener",
+    "mode": "tab",
+    "width": 400,
+    "height": 400,
+    "autoInit": {
+      "channels": true
+    },
+    "channelSelector": {
+      "enabled": true,
+      "type": "single"
+    }
+  },
+  "version": "1.0.0",
+  "tooltip": "How-to FDC3 System Channel Listener",
+  "type": "window",
+  "channels": [
+  ],
+  "intents": [
+  ]
+}

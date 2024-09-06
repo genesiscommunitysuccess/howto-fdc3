@@ -1,0 +1,30 @@
+{
+  "name": "HowToFdc3IntentsListener",
+  "title": "How-to FDC3 Intent Listener",
+  "details": {
+    "autoOpenDevTools": true,
+    "allowAuthInfo": true,
+    "url": "http://localhost:6060/intent-listener",
+    "mode": "tab",
+    "width": 400,
+    "height": 400,
+    "autoInit": {
+      "channels": true
+    },
+    "channelSelector": {
+      "enabled": true,
+      "type": "single"
+    }
+  },
+  "version": "1.0.0",
+  "tooltip": "How-to FDC3 Intent Listener",
+  "type": "window",
+  "channels": [
+  ],
+  "intents": [
+    {
+      "name":"CreateTrade",
+      "contexts": [ "fdc3.instrument"]
+    }
+  ]
+}
