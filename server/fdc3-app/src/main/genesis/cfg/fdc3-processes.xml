@@ -1,0 +1,22 @@
+<!--
+    Processes defined here will run the application.
+
+  * Full documentation on process definitions may be found here >> https://docs.genesis.global/docs/develop/server-capabilities/runtime-configuration/processes/
+
+-->
+
+<processes>
+  <process name="FDC3_MANAGER">
+    <groupId>FDC3</groupId>
+    <start>true</start>
+    <options>-Xmx512m -DRedirectStreamsToLog=true</options>
+    <module>genesis-pal-eventhandler,genesis-pal-requestserver,genesis-pal-dataserver</module>
+    <package>global.genesis.dataserver.pal,global.genesis.eventhandler.pal,global.genesis.requestreply.pal</package>
+    <script>fdc3-eventhandler.kts,fdc3-reqrep.kts,fdc3-dataserver.kts</script>
+    <description>Management of eventhandler, request server and data server processes</description>
+    <classpath>fdc3-app*</classpath>
+    <language>pal</language>
+  </process>
+<!-- TODO Runtime 2. Add any new process definitions here-->
+
+</processes>

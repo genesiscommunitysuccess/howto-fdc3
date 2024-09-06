@@ -1,0 +1,665 @@
+{
+  "meta": {
+    "version": "1.103.1",
+    "generated": "Mon, 05 Aug 2024 10:04:26 GMT"
+  },
+  "data": {
+    "projectName": "fdc3",
+    "description": "Example Application for showing the possibilities in the front end",
+    "components": [
+      "GenesisServerCore",
+      "User Authorization",
+      "DataServerCore",
+      "ListenChannelFDC3"
+    ],
+    "fields": [
+      {
+        "name": "ENTITY_NAME",
+        "type": "STRING",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false,
+        "sensitive": false
+      },
+      {
+        "name": "ENTITY_DESCRIPTION",
+        "type": "STRING",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false,
+        "sensitive": false
+      },
+      {
+        "name": "CLIENT_NAME",
+        "type": "STRING",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false,
+        "sensitive": false
+      },
+      {
+        "name": "CLIENT_DESCRIPTION",
+        "type": "STRING",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false,
+        "sensitive": false
+      },
+      {
+        "name": "ENTRY_DATETIME",
+        "type": "DATETIME",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false
+      },
+      {
+        "name": "TRADE_ID",
+        "type": "STRING",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false,
+        "sensitive": false
+      },
+      {
+        "name": "VERSION",
+        "type": "INT",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false
+      },
+      {
+        "name": "STATUS",
+        "type": "ENUM",
+        "defaultValue": "New",
+        "nullable": false,
+        "readOnly": false,
+        "values": [
+          "New",
+          "Amended",
+          "Cancelled"
+        ]
+      },
+      {
+        "name": "SIDE",
+        "type": "ENUM",
+        "defaultValue": "Buy",
+        "nullable": false,
+        "readOnly": false,
+        "values": [
+          "Buy",
+          "Sell"
+        ]
+      },
+      {
+        "name": "TARGET_CURRENCY",
+        "type": "STRING",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false,
+        "sensitive": false
+      },
+      {
+        "name": "SOURCE_CURRENCY",
+        "type": "STRING",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false,
+        "sensitive": false
+      },
+      {
+        "name": "NOTIONAL",
+        "type": "DOUBLE",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false
+      },
+      {
+        "name": "RATE",
+        "type": "DOUBLE",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false
+      },
+      {
+        "name": "SETTLEMENT_DATE",
+        "type": "DATE",
+        "defaultValue": null,
+        "nullable": false,
+        "readOnly": false
+      }
+    ],
+    "tables": [
+      {
+        "name": "ENTITY",
+        "id": 11000,
+        "primaryKey": {
+          "id": null,
+          "name": null,
+          "fields": [
+            "ENTITY_NAME"
+          ],
+          "indexType": "UNIQUE"
+        },
+        "fields": [
+          {
+            "name": "ENTITY_NAME"
+          },
+          {
+            "name": "ENTITY_DESCRIPTION",
+            "nullable": false
+          }
+        ],
+        "generatedFields": [],
+        "audit": true,
+        "generateCreateUpdateDelete": true,
+        "snapshot": true,
+        "realtimeQuery": {
+          "queryName": "ALL_ENTITYS",
+          "fields": [
+            "ENTITY_NAME",
+            "ENTITY_DESCRIPTION"
+          ]
+        },
+        "indices": [],
+        "meta": {
+          "attrOrder": [
+            "ENTITY_NAME",
+            "ENTITY_DESCRIPTION"
+          ]
+        }
+      },
+      {
+        "name": "CLIENT",
+        "id": 11001,
+        "primaryKey": {
+          "id": null,
+          "name": null,
+          "fields": [
+            "CLIENT_NAME"
+          ],
+          "indexType": "UNIQUE"
+        },
+        "fields": [
+          {
+            "name": "CLIENT_NAME"
+          },
+          {
+            "name": "CLIENT_DESCRIPTION",
+            "nullable": false
+          }
+        ],
+        "generatedFields": [],
+        "audit": true,
+        "generateCreateUpdateDelete": true,
+        "snapshot": true,
+        "realtimeQuery": {
+          "queryName": "ALL_CLIENTS",
+          "fields": [
+            "CLIENT_NAME",
+            "CLIENT_DESCRIPTION"
+          ]
+        },
+        "indices": [],
+        "meta": {
+          "attrOrder": [
+            "CLIENT_NAME",
+            "CLIENT_DESCRIPTION"
+          ]
+        }
+      },
+      {
+        "name": "TRADE",
+        "id": 11002,
+        "primaryKey": {
+          "id": null,
+          "name": null,
+          "fields": [
+            "TRADE_ID"
+          ],
+          "indexType": "UNIQUE"
+        },
+        "fields": [
+          {
+            "name": "ENTRY_DATETIME",
+            "nullable": false
+          },
+          {
+            "name": "VERSION",
+            "nullable": false
+          },
+          {
+            "name": "STATUS"
+          },
+          {
+            "name": "SIDE"
+          },
+          {
+            "name": "TARGET_CURRENCY",
+            "nullable": false
+          },
+          {
+            "name": "SOURCE_CURRENCY",
+            "nullable": false
+          },
+          {
+            "name": "NOTIONAL",
+            "nullable": false
+          },
+          {
+            "name": "RATE",
+            "nullable": false
+          },
+          {
+            "name": "SETTLEMENT_DATE",
+            "nullable": false
+          },
+          {
+            "name": "CLIENT_NAME",
+            "nullable": false
+          },
+          {
+            "name": "ENTITY_NAME",
+            "nullable": false
+          }
+        ],
+        "generatedFields": [
+          {
+            "fieldType": "STRING",
+            "generatedFieldType": "SEQUENCE",
+            "name": "TRADE_ID",
+            "sequence": "TR",
+            "useUUID": false
+          }
+        ],
+        "audit": true,
+        "generateCreateUpdateDelete": true,
+        "snapshot": true,
+        "realtimeQuery": {
+          "queryName": "ALL_TRADES",
+          "fields": [
+            "ENTRY_DATETIME",
+            "TRADE_ID",
+            "VERSION",
+            "STATUS",
+            "SIDE",
+            "TARGET_CURRENCY",
+            "SOURCE_CURRENCY",
+            "NOTIONAL",
+            "RATE",
+            "SETTLEMENT_DATE",
+            "CLIENT_NAME",
+            "ENTITY_NAME"
+          ]
+        },
+        "indices": [],
+        "meta": {
+          "attrOrder": [
+            "ENTRY_DATETIME",
+            "TRADE_ID",
+            "VERSION",
+            "STATUS",
+            "SIDE",
+            "TARGET_CURRENCY",
+            "SOURCE_CURRENCY",
+            "NOTIONAL",
+            "RATE",
+            "SETTLEMENT_DATE",
+            "CLIENT_NAME",
+            "ENTITY_NAME"
+          ]
+        }
+      }
+    ],
+    "consolidators": [],
+    "ui": {
+      "config": null,
+      "routes": [
+        {
+          "id": "39178f9a-fcb6-4934-9244-28ef97d0ca4a",
+          "name": "Static",
+          "layoutType": null,
+          "permissions": null,
+          "tiles": [
+            {
+              "title": "Entities",
+              "type": "entity-manager",
+              "config": {
+                "resourceName": "ALL_ENTITYS",
+                "permissions": null,
+                "updateEvent": "EVENT_ENTITY_MODIFY",
+                "deleteEvent": "EVENT_ENTITY_DELETE",
+                "createEvent": "EVENT_ENTITY_INSERT",
+                "modalPosition": "centre",
+                "sizeColumnsToFit": true,
+                "enableSearchBar": false,
+                "reqrep": false,
+                "columns": [
+                  {
+                    "field": "ENTITY_NAME",
+                    "meta": {
+                      "gridDisplay": {
+                        "mode": "visible",
+                        "type": "string",
+                        "format": "Input"
+                      },
+                      "attribute": "ENTITY_NAME",
+                      "displayName": "Entity Name",
+                      "alias": null,
+                      "id": "ENTITY_NAMEID"
+                    }
+                  },
+                  {
+                    "field": "ENTITY_DESCRIPTION",
+                    "meta": {
+                      "gridDisplay": {
+                        "mode": "visible",
+                        "type": "string",
+                        "format": "Input"
+                      },
+                      "attribute": "ENTITY_DESCRIPTION",
+                      "displayName": "Entity Description",
+                      "alias": null,
+                      "id": "ENTITY_DESCRIPTIONID"
+                    }
+                  }
+                ],
+                "createFormUiSchema": {
+                  "type": "VerticalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "label": "Entity Name",
+                      "scope": "#/properties/ENTITY_NAME",
+                      "options": {},
+                      "meta": {
+                        "createForm": {
+                          "mode": "visible",
+                          "type": "string",
+                          "format": "Input"
+                        },
+                        "alias": null,
+                        "attribute": "ENTITY_NAME",
+                        "id": "ENTITY_NAMEID"
+                      }
+                    },
+                    {
+                      "type": "Control",
+                      "label": "Entity Description",
+                      "scope": "#/properties/ENTITY_DESCRIPTION",
+                      "options": {},
+                      "meta": {
+                        "createForm": {
+                          "mode": "visible",
+                          "type": "string",
+                          "format": "Input"
+                        },
+                        "alias": null,
+                        "attribute": "ENTITY_DESCRIPTION",
+                        "id": "ENTITY_DESCRIPTIONID"
+                      }
+                    }
+                  ]
+                },
+                "updateFormUiSchema": {
+                  "type": "VerticalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "label": "Entity Name",
+                      "scope": "#/properties/ENTITY_NAME",
+                      "options": {},
+                      "meta": {
+                        "updateForm": {
+                          "mode": "visible",
+                          "type": "string",
+                          "format": "Input"
+                        },
+                        "alias": null,
+                        "attribute": "ENTITY_NAME",
+                        "id": "ENTITY_NAMEID"
+                      }
+                    },
+                    {
+                      "type": "Control",
+                      "label": "Entity Description",
+                      "scope": "#/properties/ENTITY_DESCRIPTION",
+                      "options": {},
+                      "meta": {
+                        "updateForm": {
+                          "mode": "visible",
+                          "type": "string",
+                          "format": "Input"
+                        },
+                        "alias": null,
+                        "attribute": "ENTITY_DESCRIPTION",
+                        "id": "ENTITY_DESCRIPTIONID"
+                      }
+                    }
+                  ]
+                },
+                "meta": {
+                  "inactiveGridConfig": [],
+                  "inactiveFormConfig": [],
+                  "configAttrNames": [
+                    {
+                      "name": "ENTITY_NAME",
+                      "alias": null
+                    },
+                    {
+                      "name": "ENTITY_DESCRIPTION",
+                      "alias": null
+                    }
+                  ]
+                }
+              },
+              "meta": {}
+            },
+            {
+              "title": "Clients",
+              "type": "entity-manager",
+              "config": {
+                "resourceName": "ALL_CLIENTS",
+                "permissions": null,
+                "updateEvent": "EVENT_CLIENT_MODIFY",
+                "deleteEvent": "EVENT_CLIENT_DELETE",
+                "createEvent": "EVENT_CLIENT_INSERT",
+                "modalPosition": "centre",
+                "sizeColumnsToFit": true,
+                "enableSearchBar": true,
+                "reqrep": false,
+                "columns": [
+                  {
+                    "field": "CLIENT_NAME",
+                    "meta": {
+                      "gridDisplay": {
+                        "mode": "visible",
+                        "type": "string",
+                        "format": "Input"
+                      },
+                      "attribute": "CLIENT_NAME",
+                      "displayName": "Client Name",
+                      "alias": null,
+                      "id": "CLIENT_NAMEID"
+                    }
+                  },
+                  {
+                    "field": "CLIENT_DESCRIPTION",
+                    "meta": {
+                      "gridDisplay": {
+                        "mode": "visible",
+                        "type": "string",
+                        "format": "Input"
+                      },
+                      "attribute": "CLIENT_DESCRIPTION",
+                      "displayName": "Client Description",
+                      "alias": null,
+                      "id": "CLIENT_DESCRIPTIONID"
+                    }
+                  }
+                ],
+                "createFormUiSchema": {
+                  "type": "VerticalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "label": "Client Name",
+                      "scope": "#/properties/CLIENT_NAME",
+                      "options": {},
+                      "meta": {
+                        "createForm": {
+                          "mode": "visible",
+                          "type": "string",
+                          "format": "Input"
+                        },
+                        "alias": null,
+                        "attribute": "CLIENT_NAME",
+                        "id": "CLIENT_NAMEID"
+                      }
+                    },
+                    {
+                      "type": "Control",
+                      "label": "Client Description",
+                      "scope": "#/properties/CLIENT_DESCRIPTION",
+                      "options": {},
+                      "meta": {
+                        "createForm": {
+                          "mode": "visible",
+                          "type": "string",
+                          "format": "Input"
+                        },
+                        "alias": null,
+                        "attribute": "CLIENT_DESCRIPTION",
+                        "id": "CLIENT_DESCRIPTIONID"
+                      }
+                    }
+                  ]
+                },
+                "updateFormUiSchema": {
+                  "type": "VerticalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "label": "Client Name",
+                      "scope": "#/properties/CLIENT_NAME",
+                      "options": {},
+                      "meta": {
+                        "updateForm": {
+                          "mode": "visible",
+                          "type": "string",
+                          "format": "Input"
+                        },
+                        "alias": null,
+                        "attribute": "CLIENT_NAME",
+                        "id": "CLIENT_NAMEID"
+                      }
+                    },
+                    {
+                      "type": "Control",
+                      "label": "Client Description",
+                      "scope": "#/properties/CLIENT_DESCRIPTION",
+                      "options": {},
+                      "meta": {
+                        "updateForm": {
+                          "mode": "visible",
+                          "type": "string",
+                          "format": "Input"
+                        },
+                        "alias": null,
+                        "attribute": "CLIENT_DESCRIPTION",
+                        "id": "CLIENT_DESCRIPTIONID"
+                      }
+                    }
+                  ]
+                },
+                "meta": {
+                  "inactiveGridConfig": [],
+                  "inactiveFormConfig": [],
+                  "configAttrNames": [
+                    {
+                      "name": "CLIENT_NAME",
+                      "alias": null
+                    },
+                    {
+                      "name": "CLIENT_DESCRIPTION",
+                      "alias": null
+                    }
+                  ]
+                }
+              },
+              "meta": {}
+            }
+          ]
+        }
+      ],
+      "framework": "web components"
+    },
+    "views": [],
+    "PBCs": [],
+    "csv": [
+      {
+        "name": "ENTITY",
+        "fields": [
+          "ENTITY_NAME",
+          "ENTITY_DESCRIPTION"
+        ]
+      },
+      {
+        "name": "CLIENT",
+        "fields": [
+          "CLIENT_NAME",
+          "CLIENT_DESCRIPTION"
+        ]
+      },
+      {
+        "name": "TRADE",
+        "fields": [
+          "ENTRY_DATETIME",
+          "VERSION",
+          "STATUS",
+          "SIDE",
+          "TARGET_CURRENCY",
+          "SOURCE_CURRENCY",
+          "NOTIONAL",
+          "RATE",
+          "SETTLEMENT_DATE",
+          "CLIENT_NAME",
+          "ENTITY_NAME"
+        ]
+      },
+      {
+        "name": "RIGHT",
+        "fields": [
+          "CODE",
+          "DESCRIPTION"
+        ],
+        "data": []
+      },
+      {
+        "name": "PROFILE",
+        "fields": [
+          "NAME",
+          "DESCRIPTION",
+          "STATUS"
+        ],
+        "data": []
+      },
+      {
+        "name": "PROFILE_RIGHT",
+        "fields": [
+          "PROFILE_NAME",
+          "RIGHT_CODE"
+        ],
+        "data": []
+      }
+    ],
+    "serverConfig": null,
+    "deliveryConfig": {
+      "method": "download",
+      "fileSuffix": "2024-08-05_110425"
+    },
+    "telemetry": {
+      "deviceId": "4bb83348-5799-4b39-b9d6-db44297d65fa",
+      "sessionId": "a293ec2e-6082-4aee-a609-2293f936fe4d"
+    }
+  }
+}

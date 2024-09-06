@@ -1,0 +1,26 @@
+{
+  "name": "HowToFdc3Blotter",
+  "title": "How-to FDC3 Blotter",
+  "details": {
+    "autoOpenDevTools": true,
+    "allowAuthInfo": true,
+    "url": "http://localhost:6060/blotter",
+    "mode": "tab",
+    "width": 400,
+    "height": 400,
+    "autoInit": {
+      "channels": true
+    },
+    "channelSelector": {
+      "enabled": true,
+      "type": "single"
+    }
+  },
+  "version": "1.0.0",
+  "tooltip": "How-to FDC3 Blotter",
+  "type": "window",
+  "channels": [
+  ],
+  "intents": [
+  ]
+}
